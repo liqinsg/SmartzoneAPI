@@ -13,8 +13,8 @@ baseurl = "https://general.direction.com:8443/wsg/api/public/v6_1/" #replace "ge
 # Written with 3.6.2 in mind
 #http://docs.ruckuswireless.com/smartzone/3.6.2/sz100-public-api-reference-guide-3-6-2.html API documentation
 
-szusername = "" #Enter a username with read privages to everything you want to access
-szpassword = "" #Password for the above account
+sz_username = "" #Enter a username with read privages to everything you want to access
+sz_password = "" #Password for the above account
 check_cert = True # Change to false if using selfsigned certs or cert chain is not on the machine running the script
 
 login_headers_template = {'Content-Type': "application/json;charset=UTF-8"}

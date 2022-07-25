@@ -8,14 +8,14 @@ import json
 session = requests.Session()
 jar = requests.cookies.RequestsCookieJar()
 
-baseurl = "https://general.direction.com:8443/wsg/api/public/v6_1/" #replace "general.direction.com" with either the host name or IP of a member of the cluster
+baseurl = "https://192.168.56.2:8443/wsg/api/public/v6_1/" #replace "general.direction.com" with either the host name or IP of a member of the cluster
 
 # Written with 3.6.2 in mind
 #http://docs.ruckuswireless.com/smartzone/3.6.2/sz100-public-api-reference-guide-3-6-2.html API documentation
 
 sz_username = "" #Enter a username with read privages to everything you want to access
 sz_password = "" #Password for the above account
-check_cert = True # Change to false if using selfsigned certs or cert chain is not on the machine running the script
+check_cert = False # Change to false if using selfsigned certs or cert chain is not on the machine running the script
 
 login_headers_template = {'Content-Type': "application/json;charset=UTF-8"}
 

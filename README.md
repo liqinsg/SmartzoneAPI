@@ -3,10 +3,10 @@
 Repository for basic python scripts to pull and print data from Ruckus SmartZone API.
 
 # Note
-https://docs.ruckuswireless.com/smartzone/5.2.2/sz100-public-api-reference-guide-522.html
 
-I am new to both python and git and scripts are training exercises. I have not written code for an extended period.
-Program is tested against a SZ100 cluster of 2 running 3.6.2 firmware and using v6_1 version of the API. These scripts work correctly with vSZ-E but not with vSZ-H. Read-only account is recommended.
+I am new to both python and git and scripts are training exercises. I have not written code for an extended period. 
+Program is tested against a SZ100 cluster of 2 running 3.6.2 and 5.2.2 firmware and using v9_1 version of the API. 
+These scripts work correctly with vSZ and SZ.
 
 ### Each script will need the following variables which will need modifying for your own configuration:
 
@@ -19,10 +19,12 @@ Program is tested against a SZ100 cluster of 2 running 3.6.2 firmware and using 
 * `check_cert`
     * Boolean - set to False if using selfsigned certificates or certificate chain is not installed on the machine
     * There is also an import commented out for supressing invalid certificate warnings for testing purposes only.
+* * `url`
 
-Use API documentation below for reference:
+* Use API documentation below for reference:
 
 [Ruckus documentation for version 3.6.2](http://docs.ruckuswireless.com/smartzone/3.6.2/sz100-public-api-reference-guide-3-6-2.html)
+[https://docs.ruckuswireless.com/smartzone/5.2.2/sz100-public-api-reference-guide-522.html](https://docs.ruckuswireless.com/smartzone/5.2.2/sz100-public-api-reference-guide-522.html)
 
 ## login_getzone.py
 

@@ -10,14 +10,17 @@ session = requests.Session()
 jar = requests.cookies.RequestsCookieJar()
 
 # replace "general.direction.com" with either the host name or IP of a member of the cluster
-baseurl = "https://172.16.0.127:8443/wsg/api/public/v9_1/"
+# baseurl = "https://172.16.0.127:8443/wsg/api/public/v9_1/"
+baseurl = "https://192.168.56.3:8443/wsg/api/public/v9_1/"
 
 # Written with 3.6.2 in mind
 # http://docs.ruckuswireless.com/smartzone/3.6.2/sz100-public-api-reference-guide-3-6-2.html API documentation
 
 # Enter a username with read privages to everything you want to access
+# sz_username = "admin"
+# sz_password = "Admin@123"  # Password for the above account
 sz_username = "admin"
-sz_password = "Admin@123"  # Password for the above account
+sz_password = "F@r3astovh"  # Password for the above account
 
 check_cert = False  # True # Change to false if using selfsigned certs or cert chain is not on the machine running the script
 
@@ -178,14 +181,15 @@ def reboot_system():
 
 
 # test code
+
 z_list = get_zones()
 r = get_ap_groups('6d037318-ea21-464a-adbe-d5934ebc17a7')
 
-data = {
-    "name": "myapGroup",
-    "description": "apGroupHere"
-}
-r = create_apgroup(data)
+# data = {
+#     "name": "myapGroup",
+#     "description": "apGroupHere"
+# }
+# r = create_apgroup(data)
 # r = reboot_system()
 if r.ok:
     json_data = ruckus_list(r)

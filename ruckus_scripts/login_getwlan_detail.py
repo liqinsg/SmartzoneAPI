@@ -1,42 +1,44 @@
 import requests
 import json
-import sys
 
 # Only use when testing, surpresses warnings about insecure servers
 #from requests.packages.urllib3.exceptions import InsecureRequestWarning
-#requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+# requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 session = requests.Session()
 jar = requests.cookies.RequestsCookieJar()
 
-baseurl = "https://general.direction.com:8443/wsg/api/public/v6_1/" #replace "general.direction.com" with either the host name or IP of a member of the cluster
+# replace "general.direction.com" with either the host name or IP of a member of the cluster
+baseurl = "https://172.16.0.127:8443/wsg/api/public/v9_1/"
 
 # Written with 3.6.2 in mind
+# http://docs.ruckuswireless.com/smartzone/3.6.2/sz100-public-api-reference-guide-3-6-2.html API documentation
 
-#http://docs.ruckuswireless.com/smartzone/3.6.2/sz100-public-api-reference-guide-3-6-2.html API documentation
-
-sz_username = "" #Enter a username with read privages to everything you want to access
-sz_password = "" #Password for the above account
-check_cert = True # Change to false if using selfsigned certs or cert chain is not on the machine running the script
+# Enter a username with read privages to everything you want to access
+sz_username = "admin"
+sz_password = "Admin@123"  # Password for the above account
+check_cert = False  # True # Change to false if using selfsigned certs or cert chain is not on the machine running the script
 
 login_headers_template = {'Content-Type': "application/json;charset=UTF-8"}
 
-login_payload = '{  "username": "' + sz_username + '",\r\n  "password": "' + sz_password + '"}'
+login_payload = '{  "username": "' + sz_username + \
+    '",\r\n  "password": "' + sz_password + '"}'
 
-wlan_template_id = ""
-zone_template_id = ""
 
-def ruckus_login(url,data):
-    output = session.post(baseurl + url, data=data, headers=login_headers_template, verify=check_cert)
+def ruckus_login(url, data):
+    output = session.post(baseurl + url, data=data,
+                          headers=login_headers_template, verify=check_cert)
     return output
-#This uses the ruckus_post above to get a session valid session cookie into the cookie jar
+
+
+# This uses the ruckus_post above to get a session valid session cookie into the cookie jar
 get_login_session_cookie = ruckus_login("session", login_payload)
 jar = get_login_session_cookie.cookies
 
 headers_template = {
-                    'Content-Type': "application/json;charset=UTF-8",
-                    'Cookie': 'JSESSIONID='+ jar['JSESSIONID']
-                    }
+    'Content-Type': "application/json;charset=UTF-8",
+                    'Cookie': 'JSESSIONID=' + jar['JSESSIONID']
+}
 
 def ruckus_post(url,data):
     output = session.post(baseurl + url, data=data, headers=headers_template, verify=check_cert)

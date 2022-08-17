@@ -10,7 +10,7 @@ Program is tested against a SZ100 cluster of 2 running 3.6.2 firmware and using 
 ### Each script will need the following variables which will need modifying for your own configuration:
 
 * `baseurl`
-    * "https://general.direction.com:8443/wsg/api/public/v6_1/" replace "general.direction.com" with the host name or IP of a member of the cluster
+    * "https://general.direction.com:8443/wsg/api/public/v9_1/" replace "general.direction.com" with the host name or IP of a member of the cluster
 * `szusername`
     * String
 * `szpassword`

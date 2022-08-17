@@ -33,8 +33,8 @@ headers_template = {
                     'Cookie': 'JSESSIONID='+ jar['JSESSIONID']
                     }
 
-def ruckus_post(url,data):
-    output = session.post(baseurl + url, data=data, headers=headers_template, verify=check_cert)
+def ruckus_post(url,jsondata):
+    output = session.post(baseurl + url, jsondata=data, headers=headers_template, verify=check_cert)
     return output
 
 def ruckus_get(url):
